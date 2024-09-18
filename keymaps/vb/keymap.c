@@ -18,7 +18,7 @@ enum layer_names {
   Symbols,
   Comm,
   Games,
-  GamesNum
+  GamesExtra,
 };
 
 
@@ -61,19 +61,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		          KC_TRNS,  XXXXXXX,  KC_TRNS,  KC_TRNS,   /**/ KC_TRNS,  KC_TRNS,  KC_TRNS,  XXXXXXX
   ),
   [Games] = LAYOUT_ortho_10x4(
-		KC_LALT,   KC_Q,      KC_W,          KC_E,      KC_R,    /**/  KC_T,    KC_Y,    KC_U,   KC_I,   KC_O,  
-        KC_LCTL,   KC_A,      KC_S,          KC_D,      KC_F,    /**/  KC_G,    KC_H,    KC_J,   KC_K,   KC_L,
-		KC_LSFT,   KC_Z,      KC_X,          KC_C,      KC_V,    /**/  KC_B,    KC_N,    KC_M,   KC_P,   XXXXXXX,
-		           KC_ESC,    MO(GamesNum),  KC_TAB,   KC_SPC,   /**/  KC_BSPC, MO(Nav), KC_ENT, TD(TD_BASE)),
-  [GamesNum] = LAYOUT_ortho_10x4(
-		KC_1,      KC_2,      KC_3,     KC_4,      KC_5,       /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  
-        KC_6,      KC_7,      KC_8,     KC_9,      KC_0,       /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-		XXXXXXX,   XXXXXXX,   XXXXXXX,  XXXXXXX,   XXXXXXX,    /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
-		           XXXXXXX,   XXXXXXX,  XXXXXXX,   XXXXXXX,    /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX)
+		KC_LALT,   KC_Q,      KC_W,            KC_E,      KC_R,    /**/  KC_T,    KC_Y,    KC_U,   KC_I,   KC_O,  
+        KC_LCTL,   KC_A,      KC_S,            KC_D,      KC_F,    /**/  KC_G,    KC_H,    KC_J,   KC_K,   KC_L,
+		KC_LSFT,   KC_Z,      KC_X,            KC_C,      KC_V,    /**/  KC_B,    KC_N,    KC_M,   KC_P,   XXXXXXX,
+		           KC_ESC,    MO(GamesExtra),  KC_TAB,   KC_SPC,   /**/  KC_BSPC, KC_DEL, KC_ENT, TD(TD_BASE)),
+  [GamesExtra] = LAYOUT_ortho_10x4(
+		KC_1,      KC_2,      KC_3,       KC_4,     KC_5,    /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,  
+        KC_6,      KC_7,      KC_8,       KC_9,     KC_0,    /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+		KC_LEFT,   KC_DOWN,   KC_UP,   KC_RGHT,  XXXXXXX,    /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX,
+		           XXXXXXX,   XXXXXXX, XXXXXXX,  XXXXXXX,    /**/  XXXXXXX,   XXXXXXX,   XXXXXXX,   XXXXXXX)
 };
 
 // clang-format on
-
 #ifdef OLED_ENABLE
 
 // /* 32 * 14 os logos */
@@ -116,8 +115,8 @@ static void print_screen(void) {
         case Games:
             oled_write("Games", false);
             break;
-        case GamesNum:
-            oled_write("GamesNum", false);
+        case GamesExtra:
+            oled_write("GamesExtra", false);
             break;
         default:
             oled_write("Undef", false);
@@ -146,3 +145,4 @@ bool oled_task_user(void) {
 }
 
 #endif
+
